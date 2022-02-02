@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegisterNewGeust</title>
+    <script>
+function genURL() {
+    var firstName = document.getElementById("firstName").value;
+     var lastName = document.getElementById("lastName").value;
+      var country = document.getElementById("country").value;
+       var state = document.getElementById("state").value;
+        var city = document.getElementById("city").value;
+         var address = document.getElementById("address").value;
+          var emailAddress = document.getElementById("emailAddress").value;
+           var phoneNumber = document.getElementById("phoneNumber").value;
+
+    window.location = "/RegisterGuest/" + "firstName/"+"firstName/"+"lastName/"+"country/"+"state/"+"city/"+"address/"+"emailAddress/"+"phoneNumber/";
+<!--    var request = new XMLHttpRequest();-->
+<!--request.open("POST", "/RegisterGuest/" + user);-->
+<!--request.send(formData);-->
+}
+</script>
+</head>
+<body>
+<form onsubmit="genURL(); return false;">
+    <input type="text" id="firstName" />
+    <input type="text" id="lastName" />
+    <input type="text" id="country" />
+    <input type="text" id="state" />
+    <input type="text" id="city" />
+    <input type="text" id="address" />
+    <input type="text" id="emailAddress" />
+    <input type="text" id="phoneNumber" />
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
