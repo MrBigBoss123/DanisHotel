@@ -21,6 +21,7 @@ public class DanisAppApplication {
         public ArrayList<Guest> ravensGuests = new ArrayList<>();
 
         public RoomController() {
+            // Set up default guests...
             Guest guest1 = new Guest();
             guest1.setCountry("USA");
             guest1.setState("California");
@@ -51,32 +52,23 @@ public class DanisAppApplication {
             return "Hey " + name + "! The current time is: " + LocalDateTime.now().toString();
         }
 
-        @GetMapping("/RegisterGuest/{firstName}/{lastName}/{country}/{state}/{city}/{address}/{email}/{phoneNumber}")
+        @PostMapping(value = "/RegisterGuest",
+                consumes = "application/json",
+                produces = "application/json"
+        )
         public void registerGuest(
-                @PathVariable String firstName,
-                @PathVariable String lastName,
-                @PathVariable String country,
-                @PathVariable String state,
-                @PathVariable String city,
-                @PathVariable String address,
-                @PathVariable String email,
-                @PathVariable String phoneNumber) {
-            Guest guest1 = new Guest();
-            guest1.setFirstName(firstName);
-            guest1.setCountry(country);
-            guest1.setState(state);
-            guest1.setCity(city);
-            guest1.setAddress(address);
-            guest1.setEmailAddress(email);
-            guest1.setPhoneNumber(phoneNumber);
-
-            ravensGuests.add(guest1);
-            System.out.println("Hey " + firstName + " " + lastName);
+                @RequestBody Guest guest) {
+            ravensGuests.add(guest);
+            System.out.println("Registered: " + guest.toString());
         }
 
         @GetMapping("/guests")
         public String guests() {
-            return ravensGuests.toString();
+            String outputString = "<h1> You have " + ravensGuests.size() + " guests!</h1>";
+            for (Guest guest : ravensGuests) {
+                outputString = outputString + guest.toString() + "<br>";
+            }
+            return outputString;
         }
 
         @GetMapping("/rooms")
@@ -89,7 +81,6 @@ public class DanisAppApplication {
             roomA1.setBathroomInfo("2b3s1t");
             ArrayList<Room> ravensRooms = new ArrayList<>();
             ravensRooms.add(roomA1);
-            //ravensRooms.add(roomA2);
             return ravensRooms.toString();
         }
 
