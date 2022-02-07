@@ -14,22 +14,28 @@ function genURL() {
     var emailAddress = document.getElementById("emailAddress").value;
     var phoneNumber = document.getElementById("phoneNumber").value;
 
-    window.location = "/RegisterGuest/" +
-        firstName + "/" +
-        lastName + "/" +
-        country + "/" +
-        state + "/" +
-        city + "/" +
-        address + "/" +
-        emailAddress + "/" +
-        phoneNumber;
-}
+    var url = "/RegisterGuest";
 
+    var request = new XMLHttpRequest();
+    request.open("POST", url);
+
+    request.setRequestHeader("Accept", "application/json");
+    request.setRequestHeader("Content-Type", "application/json");
+
+    var data = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "country": country
+    };
+
+    request.send(JSON.stringify(data));
+    console.log("SENT");
+}
     </script>
 </head>
 <body>
 
-<H1> Register your guest account</H1>
+<H1> Register your guest account: POST</H1>
 
 <form onsubmit="genURL(); return false;">
     <input placeholder="first name" type="text" id="firstName"/> <br>
@@ -42,5 +48,7 @@ function genURL() {
     <input placeholder="phone" type="text" id="phoneNumber"/> <br>
     <input type="submit" value="Submit"/>
 </form>
+
+<a href="/index.html">Return to home</a>
 </body>
 </html>
