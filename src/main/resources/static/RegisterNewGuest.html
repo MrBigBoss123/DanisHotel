@@ -25,11 +25,18 @@ function genURL() {
     var data = {
         "firstName": firstName,
         "lastName": lastName,
-        "country": country
+        "country": country,
+        "state": state,
+        "city": city,
+        "address": address,
+        "emailAddress": emailAddress,
+        "phoneNumber": phoneNumber
     };
 
     request.send(JSON.stringify(data));
-    console.log("SENT");
+    console.log("SENT"+ JSON.stringify(request));
+    window.location.replace("/");
+
 }
     </script>
 </head>
