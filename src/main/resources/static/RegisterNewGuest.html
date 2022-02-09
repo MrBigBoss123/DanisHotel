@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E</script>
     <meta charset="UTF-8">
     <title>RegisterNewGeust</title>
     <script>
@@ -35,11 +36,20 @@ function genURL() {
     request.onreadystatechange  = function(){
         if(this.readyState == 4 && this.status == 200) {
           var response = JSON.parse(request.responseText);
+          console.log(JSON.stringify(response));
+          if (response.code == 0){
+             console.log("success");
+             window.location.replace("/");
+          } else {
+              console.log("failed");
+              $("#emailAddress").css("background-color","pink");
+          }
           //response.code;
           //response.message;
-          //window.location.replace("/");
+
         }
     }
+    request.send(JSON.stringify(data));
 }
     </script>
 </head>
