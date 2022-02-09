@@ -1,6 +1,7 @@
 package com.example.danisapp;
 
 import com.example.danisapp.data.Guest;
+import com.example.danisapp.data.GuestValidator;
 import com.example.danisapp.data.Room;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,32 @@ public class DanisAppApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DanisAppApplication.class, args);
+    }
+
+    class Status {
+        int code;
+        String message;
+
+        public Status(int code, String message) {
+            this.code = code;
+            this.message = message;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 
     @RestController
@@ -56,10 +83,18 @@ public class DanisAppApplication {
                 consumes = "application/json",
                 produces = "application/json"
         )
-        public void registerGuest(
+        public Status registerGuest(
                 @RequestBody Guest guest) {
-            ravensGuests.add(guest);
-            System.out.println("Registered: " + guest.toString());
+            if (GuestValidator.isEmailValid(guest.getEmailAddress())) {
+                ravensGuests.add(guest);
+                System.out.println("Registered: " + guest.toString());
+                return new Status(0, "");
+            } else {
+                System.out.println("Invalid email");
+                return new Status(1, "Invalid Email");
+
+            }
+
         }
 
         @GetMapping("/guests")

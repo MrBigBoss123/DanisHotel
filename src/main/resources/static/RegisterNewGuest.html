@@ -32,11 +32,14 @@ function genURL() {
         "emailAddress": emailAddress,
         "phoneNumber": phoneNumber
     };
-
-    request.send(JSON.stringify(data));
-    console.log("SENT"+ JSON.stringify(request));
-    window.location.replace("/");
-
+    request.onreadystatechange  = function(){
+        if(this.readyState == 4 && this.status == 200) {
+          var response = JSON.parse(request.responseText);
+          //response.code;
+          //response.message;
+          //window.location.replace("/");
+        }
+    }
 }
     </script>
 </head>
