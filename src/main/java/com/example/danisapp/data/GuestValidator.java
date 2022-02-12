@@ -15,8 +15,6 @@ public class GuestValidator {
 
         boolean validAtFound = ((email.substring(0,email.length()-3)).contains("@"));
 
-
-
         return validLetterFound && validAtFound;
     }
 }
