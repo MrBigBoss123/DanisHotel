@@ -85,14 +85,17 @@ public class DanisAppApplication {
         )
         public Status registerGuest(
                 @RequestBody Guest guest) {
-            if (GuestValidator.isEmailValid(guest.getEmailAddress())) {
-                ravensGuests.add(guest);
-                System.out.println("Registered: " + guest.toString());
-                return new Status(0, "");
-            } else {
+            if (!GuestValidator.isEmailValid(guest.getEmailAddress())) {
                 System.out.println("Invalid email");
                 return new Status(1, "Invalid Email");
             }
+            if (!GuestValidator.isPhoneNumberValid(guest.getPhoneNumber())) {
+                System.out.println("Invalid Phone Number");
+                return new Status(2, "Invalid Phone Number");
+            }
+            ravensGuests.add(guest);
+            System.out.println("Registered: " + guest.toString());
+            return new Status(0, "");
         }
 
         @GetMapping("/guests")

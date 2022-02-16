@@ -40,9 +40,12 @@ function genURL() {
           if (response.code == 0){
              console.log("success");
              window.location.replace("/");
-          } else {
+          } else if(response.code == 1){
               console.log("failed");
               $("#emailAddress").css("background-color","pink");
+          } else if(response.code == 2){
+              console.log("failed");
+              $("#phoneNumber").css("background-color","pink");
           }
         }
     }
