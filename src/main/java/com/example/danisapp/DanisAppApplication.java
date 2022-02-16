@@ -92,9 +92,7 @@ public class DanisAppApplication {
             } else {
                 System.out.println("Invalid email");
                 return new Status(1, "Invalid Email");
-
             }
-
         }
 
         @GetMapping("/guests")
