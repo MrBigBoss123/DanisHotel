@@ -38,7 +38,7 @@ jobs:
         # Comma seperated list of source folders to ignore for lookup
         #exclude_sources: # optional, default is /build/,/__pycache__/
         # Regular expression for the named test suites
-        #suite_regex: # optional, default is 
+        suite_regex: Test*
         # Defines if the active check should be updated instead
         #update_check: # optional, default is false
         # Check name for test reports.
@@ -53,3 +53,4 @@ jobs:
         include_passed: true# optional, default is false
         # Additional text to summary output
         #summary: # optional, default is 
+      
