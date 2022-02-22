@@ -1,26 +1,40 @@
 package com.example.danisapp.data;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ROOM")
 public class Room {
-    private Long roomId;
-    private String roomName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ROOM_ID")
+    private long id;
+    @Column(name="NAME")
+    private String name;
+    @Column(name="ROOM_NUMBER")
     private String roomNumber;
+    @Column(name="BED_INFO")
     private String bedInfo;
-    private String bathroomInfo;
 
-    public Long getRoomId() {
-        return roomId;
+    public long getId() {
+        return id;
     }
 
-    public void setRoomId(Long roomId) {
-        this.roomId = roomId;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getRoomName() {
-        return roomName;
+    public String getName() {
+        return name;
     }
 
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getRoomNumber() {
@@ -39,22 +53,13 @@ public class Room {
         this.bedInfo = bedInfo;
     }
 
-    public String getBathroomInfo() {
-        return bathroomInfo;
-    }
-
-    public void setBathroomInfo(String BathroomInfo) {
-        this.bathroomInfo = BathroomInfo;
-    }
-
     @Override
     public String toString() {
         return "Room{" +
-                "roomId=" + roomId +
-                ", roomName='" + roomName + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", roomNumber='" + roomNumber + '\'' +
                 ", bedInfo='" + bedInfo + '\'' +
-                ", bathroomInfo='" + bathroomInfo + '\'' +
                 '}';
     }
 }

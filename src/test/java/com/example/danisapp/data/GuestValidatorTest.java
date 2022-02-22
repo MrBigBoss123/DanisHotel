@@ -1,6 +1,6 @@
 package com.example.danisapp.data;
 
-import org.junit.jupiter.api.Test;
+import com.example.danisapp.validators.GuestValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -14,7 +14,6 @@ class GuestValidatorTest {
     @ParameterizedTest
     @MethodSource(value = "invalidEmails")
     void testInvalidEmail(String invalidEmail) {
-        //String invalidEmail = "notAValid email";
         boolean valid = GuestValidator.isEmailValid(invalidEmail);
         assertFalse(valid, invalidEmail);
     }
