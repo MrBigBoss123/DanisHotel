@@ -1,4 +1,4 @@
-package com.example.danisapp.data;
+package com.example.danisapp.validators;
 
 public class GuestValidator {
     static char[] validLetters = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',

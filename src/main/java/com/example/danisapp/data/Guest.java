@@ -1,16 +1,22 @@
 package com.example.danisapp.data;
 
 public class Guest {
+    private int guestId;
     private String firstName;
     private String lastName;
-
-    private int guestId;
     private String emailAddress;
-    private String phoneNumber;
+    private String address;
     private String country;
     private String state;
-    private String city;
-    private String address;
+    private String phoneNumber;
+
+    public int getGuestId() {
+        return guestId;
+    }
+
+    public void setGuestId(int guestId) {
+        this.guestId = guestId;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -28,14 +34,6 @@ public class Guest {
         this.lastName = lastName;
     }
 
-    public long getGuestId() {
-        return guestId;
-    }
-
-    public void setGuestId(int guestId) {
-        this.guestId = guestId;
-    }
-
     public String getEmailAddress() {
         return emailAddress;
     }
@@ -44,12 +42,12 @@ public class Guest {
         this.emailAddress = emailAddress;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getAddress() {
+        return address;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCountry() {
@@ -64,37 +62,29 @@ public class Guest {
         return state;
     }
 
-    public void setState(String city) {
-        this.state = state;
-    }
-    public String getCity() {
-        return state;
-    }
-
-    public void setCity(String city) {
+    public void setState(String state) {
         this.state = state;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
     public String toString() {
         return "Guest{" +
-                "firstName='" + firstName + '\'' +
+                "guestId=" + guestId +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", guestId=" + guestId +
                 ", emailAddress='" + emailAddress + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
-                ", state='" + city + '\'' +
-                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }
